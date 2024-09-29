@@ -20,6 +20,8 @@ conda create -n pdfembedding python=3.9
 conda activate pdfembedding
 pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu118
 pip install timm==0.4.12
+git clone https://github.com/WangWenhao0716/PDF-Embedding.git
+cd PDF-Embedding
 ```
 
 ## Feature Extraction
