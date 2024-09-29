@@ -54,7 +54,7 @@ _, indices = torch.max(cosine_similarity, dim=1)
 similarity = (5-indices)/5
 
 # Matching by Weighting:
-s = torch.Tensor([1,0.8,0.6,0.4,0.2,0])
+s = torch.Tensor([1,0.8,0.6,0.4,0.2,0]).cuda()
 similarity = F.softmax(cosine_similarity, dim=1)@s
 
 ```
