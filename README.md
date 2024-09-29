@@ -33,11 +33,11 @@ from pdf_embedding_extractor import preprocessor, create_model
 
 model_name = 'vit_base_query'
 weight_name = 'vit_exp_563.pth.tar'#'vit_gauss_760.pth.tar'
-model = create_model(model_name, weight_name)
+model = create_model(model_name, weight_name).cuda()
 
 url = "https://huggingface.co/datasets/WenhaoWang/AnyPattern/resolve/main/Irises.jpg"
 image = Image.open(requests.get(url, stream=True).raw)
-x = preprocessor(image).unsqueeze(0)
+x = preprocessor(image).unsqueeze(0).cuda()
 
 pdf_features = model.forward_features(x)  # => torch.Size([6, 768])
 ```
