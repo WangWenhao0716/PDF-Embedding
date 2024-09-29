@@ -35,11 +35,15 @@ model_name = 'vit_base_query'
 weight_name = 'vit_exp_563.pth.tar'#'vit_gauss_760.pth.tar'
 model = create_model(model_name, weight_name).cuda()
 
-url = "https://huggingface.co/datasets/WenhaoWang/AnyPattern/resolve/main/Irises.jpg"
-image = Image.open(requests.get(url, stream=True).raw)
-x = preprocessor(image).unsqueeze(0).cuda()
+url_real = "https://huggingface.co/datasets/WenhaoWang/D-Rep/resolve/main/Irises_real.jpg"
+image_real = Image.open(requests.get(url_real, stream=True).raw)
+x_real = preprocessor(image_real).unsqueeze(0).cuda()
+pdf_features_real = model.forward_features(x_real)  # => torch.Size([1, 6, 768])
 
-pdf_features = model.forward_features(x)  # => torch.Size([1, 6, 768])
+url_gen = "https://huggingface.co/datasets/WenhaoWang/D-Rep/resolve/main/Irises_gen.jpg"
+image_gen = Image.open(requests.get(url_gen, stream=True).raw)
+x_gen = preprocessor(image_gen).unsqueeze(0).cuda()
+pdf_features_gen = model.forward_features(x_gen)  # => torch.Size([1, 6, 768])
 ```
 
 ## Matching
@@ -47,16 +51,9 @@ pdf_features = model.forward_features(x)  # => torch.Size([1, 6, 768])
 ```python
 # Assume we have two pdf_features: pdf_features_1 and pdf_features_2   => torch.Size([1, 6, 768])
 from torch.nn import functional as F
-cosine_similarity = F.cosine_similarity(pdf_features_1, pdf_features_2, dim=2) # => torch.Size([1, 6])
-
-# Matching by Max:
+cosine_similarity = F.cosine_similarity(pdf_features_real, pdf_features_gen, dim=2) # => torch.Size([1, 6])
 _, indices = torch.max(cosine_similarity, dim=1)
 similarity = (5-indices)/5
-
-# Matching by Weighting:
-s = torch.Tensor([1,0.8,0.6,0.4,0.2,0]).cuda()
-similarity = F.softmax(cosine_similarity, dim=1)@s
-
 ```
 
 
