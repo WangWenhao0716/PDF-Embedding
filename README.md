@@ -78,6 +78,10 @@ similarity = F.softmax(cosine_similarity, dim=0)@s
 
 ```
 
+## License
+
+We release the code and trained models under the [CC-BY-NC-4.0 license](https://creativecommons.org/licenses/by-nc/4.0/deed.en). 
+
 ## Contact
 
 If you have any questions, feel free to contact [Wenhao Wang](https://wangwenhao0716.github.io/) (wangwenhao0716@gmail.com).
