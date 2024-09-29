@@ -31,7 +31,7 @@ from PIL import Image
 
 from pdf_embedding_extractor import preprocessor, create_model
 
-model_name = 'vit_base'
+model_name = 'vit_base_query'
 weight_name = 'vit_exp_563.pth.tar'#'vit_gauss_760.pth.tar'
 model = create_model(model_name, weight_name)
 
