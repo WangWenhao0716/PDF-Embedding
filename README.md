@@ -51,7 +51,7 @@ pdf_features_gen = model.forward_features(x_gen)  # => torch.Size([1, 6, 768])
 ## Matching
 
 ```python
-# Assume we have two pdf_features: pdf_features_1 and pdf_features_2   => torch.Size([1, 6, 768])
+# Assume we have two pdf_features: pdf_features_1 and pdf_features_2  => torch.Size([1, 6, 768])
 from torch.nn import functional as F
 cosine_similarity = F.cosine_similarity(pdf_features_real, pdf_features_gen, dim=2) # => torch.Size([1, 6])
 _, indices = torch.max(cosine_similarity, dim=1)
