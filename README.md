@@ -64,7 +64,7 @@ similarity = F.softmax(cosine_similarity, dim=0)@s
 
 1. The model described herein may yield false positive or negative predictions. Consequently, the contents of this paper should not be construed as legal advice.
 2. The currently released models are only trained on 36,000 image pairs and are NOT ready for commercial use. If you plan to use them commercially, please contact wangwenhao0716@gmail.com.
-3. We do not release the training code currently and we are sorry for any inconvenience.
+3. We do not release the training code currently because of its potential commercial value.
 
 ## Citation
 ```
