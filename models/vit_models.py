@@ -287,5 +287,4 @@ def deit_base_query_patch16_224(pretrained=True, **kwargs):
         pos_embed_new = torch.cat([repeated_pos, remaining_pos], dim=1)
         checkpoint["model"]['pos_embed'] = pos_embed_new
         pkg = model.load_state_dict(checkpoint["model"], strict = False)
-        print("Unpre-trained parameters: ", pkg)
     return model
