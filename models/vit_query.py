@@ -73,7 +73,7 @@ class VisionTransformer_(nn.Module):
         
         self.base = nn.Sequential(
             vit
-        ).cuda()
+        )#.cuda()
         
         #self.linear = nn.Linear(vit.embed_dim, 512)
         
