@@ -1,5 +1,5 @@
 # PDF-Embedding
-[NeurIPS 2024] The official implementation of "Image Copy Detection for Diffusion Models"
+[NeurIPS 2024] The official implementation of "[Image Copy Detection for Diffusion Models](https://arxiv.org/abs/2409.19952)"
 
 ![image](https://github.com/WangWenhao0716/PDF-Embedding/blob/main/PDF-Embedding.jpg)
 
